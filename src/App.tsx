@@ -8,46 +8,60 @@ import { Oscar } from "./components/Oscar";
 import { Person } from "./components/Person";
 import PersonList from "./components/PersonList";
 import { Status } from "./components/Status";
+
+//
+import { ThemeContextProvider } from "./components/context/ThemeContext";
+import { Box } from "./components/context/Box";
+import { UserContextProvider } from "./components/context/UserContext";
+import { User } from "./components/context/User";
+
+// component
 function App() {
-  const personName = {
-    first: "Burce",
-    last: "Wayne",
-  };
+    const personName = {
+        first: "Burce",
+        last: "Wayne",
+    };
 
-  const nameList = [
-    {
-      first: "Bruce",
-      last: "Wayne",
-    },
-    {
-      first: "Clack",
-      last: "Kent",
-    },
-    {
-      first: "Princess",
-      last: "Diana",
-    },
-  ];
+    const nameList = [
+        {
+            first: "Bruce",
+            last: "Wayne",
+        },
+        {
+            first: "Clack",
+            last: "Kent",
+        },
+        {
+            first: "Princess",
+            last: "Diana",
+        },
+    ];
 
-  return (
-    <div className="App">
-      <Greet name={"Vishwas!"} isLoggedIn />
-      <Person name={personName} />
-      <PersonList names={nameList} />
-      <Status status="loading" />
-      <Heading>Placholder text</Heading>
-      <Oscar>
-        <Heading>Oscar does to Leonardo Dicpario!</Heading>
-      </Oscar>
-      <Button
-        handleClick={(e, id) => {
-          console.log("Button object", e);
-        }}
-      />
-      <Input value="" handleChange={(e) => console.log(e.target.value)} />
-      <Container styles={{ padding: "1rem", border: "1px solid #000" }} />
-    </div>
-  );
+    return (
+        <div className="App">
+            <Greet name={"Vishwas!"} isLoggedIn />
+            <Person name={personName} />
+            <PersonList names={nameList} />
+            <Status status="loading" />
+            <Heading>Placholder text</Heading>
+            <Oscar>
+                <Heading>Oscar does to Leonardo Dicpario!</Heading>
+            </Oscar>
+            <Button
+                handleClick={(e, id) => {
+                    console.log("Button object", e);
+                }}
+            />
+            <Input value="" handleChange={(e) => console.log(e.target.value)} />
+            <Container styles={{ padding: "1rem", border: "1px solid #000" }} />
+            <ThemeContextProvider>
+                <Box />
+            </ThemeContextProvider>
+            <UserContextProvider>
+                <User />
+            </UserContextProvider>
+        </div>
+    );
 }
 
 export default App;
